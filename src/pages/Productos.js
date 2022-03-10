@@ -32,6 +32,7 @@ const Productos = () => {
                     }} key={prod.id}>
                         <div className="card">
                             <div className="card-body">
+                                <img className="img-fluid" src={prod.imagenDni} alt="imagen dni" />
                                 <p>{prod.nombre}</p>
                             </div>
                         </div>
