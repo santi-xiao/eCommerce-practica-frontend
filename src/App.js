@@ -18,7 +18,7 @@ const App = () => {
 
             </div>
             <div className='col-md-2'>
-              <Carrito />
+              <Carrito carrito={carrito} setCarrito={setCarrito} />
             </div>
           </div>
         </div>

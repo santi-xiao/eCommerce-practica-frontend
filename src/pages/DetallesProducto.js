@@ -12,12 +12,12 @@ const DetallesProducto = () =>{
 
     const handleClick = () => {
       let newCarrito = [...carrito];
-      let prodIndex = newCarrito.findIndex((prod => prod.nombre === producto.nombre));
+      let prodIndex = newCarrito.findIndex((prod => prod.id === producto.id));
 
       if(prodIndex > -1){
         newCarrito[prodIndex].cantidad += 1;
       }else{
-        newCarrito.push({nombre: producto.nombre, precio: producto.precio, cantidad: 1})
+        newCarrito.push({id:producto.id ,nombre: producto.nombre, precio: producto.precio, cantidad: 1})
       }
       setCarrito(newCarrito);
     }
