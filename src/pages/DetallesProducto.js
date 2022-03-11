@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useOutletContext, useParams } from 'react-router-dom';
 import Producto from '../Components/Producto';
 
 const axios = require('axios');
 
 const DetallesProducto = () =>{
     let params = useParams();
+    const [carrito, setCarrito] = useOutletContext();
 
     const [producto, setProducto] = useState(null);
+
+    const handleClick = () => {
+      setCarrito((p) => p +1);
+    }
 
     useEffect(() => {
         axios.get("http://127.0.0.1:8080/api/productos/producto/" + params.productoId)
@@ -19,7 +24,8 @@ const DetallesProducto = () =>{
 
     return(
         <div>
-            <Producto  {...producto}/>
+            <Producto  {...producto} carrito={carrito} setCarrito={setCarrito} />
+            <button onClick={handleClick}>{carrito}</button>
         </div>
     )
 }
