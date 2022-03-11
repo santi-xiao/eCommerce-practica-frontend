@@ -1,12 +1,6 @@
 import React from 'react';
 
-const Producto = ({id,nombre,descripcion,categoria,precio,imagenDni,imagenCuerpo,activo,publico}, props) => {
-
-    console.log(props);
-    const handleAddCart = ()=>{
-        props.setCarrito((p) => p +1)
-    }
-
+const Producto = ({id,nombre,descripcion,categoria,precio,imagenDni,imagenCuerpo,activo,publico}) => {
     return(
         <div className='container p-3 mt-5'>
             <div className='card'>
@@ -18,9 +12,6 @@ const Producto = ({id,nombre,descripcion,categoria,precio,imagenDni,imagenCuerpo
                         <h3 className='fw-bold '>{precio} €</h3>
                     </div>
                 </div>
-                    <div className='d-grid'>
-                        <button className='btn btn-warning' onClick={handleAddCart}>{props.carrito}</button>
-                    </div>
             </div>
         </div>
     )

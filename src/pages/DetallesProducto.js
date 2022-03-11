@@ -11,7 +11,15 @@ const DetallesProducto = () =>{
     const [producto, setProducto] = useState(null);
 
     const handleClick = () => {
-      setCarrito((p) => p +1);
+      let newCarrito = [...carrito];
+      let prodIndex = newCarrito.findIndex((prod => prod.nombre === producto.nombre));
+
+      if(prodIndex > -1){
+        newCarrito[prodIndex].cantidad += 1;
+      }else{
+        newCarrito.push({nombre: producto.nombre, precio: producto.precio, cantidad: 1})
+      }
+      setCarrito(newCarrito);
     }
 
     useEffect(() => {
@@ -24,8 +32,8 @@ const DetallesProducto = () =>{
 
     return(
         <div>
-            <Producto  {...producto} carrito={carrito} setCarrito={setCarrito} />
-            <button onClick={handleClick}>{carrito}</button>
+            <Producto  {...producto}/>
+            <button onClick={handleClick} className="btn btn-warning">Añadir</button>
         </div>
     )
 }
