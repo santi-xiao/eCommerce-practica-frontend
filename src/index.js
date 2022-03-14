@@ -7,6 +7,8 @@ import Home from './pages/Home'
 import Productos from './pages/Productos';
 import DetallesProducto from './pages/DetallesProducto';
 import Pasarela from './pages/Pasarela';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 
 ReactDOM.render(
@@ -21,6 +23,8 @@ ReactDOM.render(
         </Route>
         <Route path="checkout" element={<Pasarela/>} />
       </Route>
+      <Route path='login' element={<Login/>}/>
+      <Route path='signup' element={<Signup />}/>
       <Route to="*" element={<p>Nada por aqui!</p>} />
     </Routes>
   </BrowserRouter>
