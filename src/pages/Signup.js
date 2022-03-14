@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const Signup = () => {
@@ -27,7 +28,10 @@ const Signup = () => {
             return console.log("contraseñas distintas");
         }
         setUsuario({
-            tipo: 1,
+            tipo: {
+                id: 2,
+                nombre: "USUARIO"
+            },
             nombre,
             apellido,
             direccion,
@@ -37,6 +41,12 @@ const Signup = () => {
             fecha_nacimiento,
             activo
         });
+        try{
+            axios.post('http://127.0.0.1:8080/api/usuarios/new', usuario);
+            console.log('guardado con exito');
+        }catch(error){
+            console.log(error);
+        }
     }
 
     return(
