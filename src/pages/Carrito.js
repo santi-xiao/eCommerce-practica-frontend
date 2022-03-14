@@ -29,7 +29,7 @@ const Carrito = (props) => {
                     ))}
                 </ul>
                 <p>Total: <span className='fw-bold'>{calcularPrecioTotal()}</span> €</p>  
-                <Link to="/" className='btn btn-warning btn-lg btn-block'>Ir a la cesta</Link>     
+                <Link to="/checkout" className='btn btn-warning btn-lg btn-block'>Ir a la cesta</Link>     
             </div>
         )
     }

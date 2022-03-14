@@ -6,6 +6,7 @@ import App from './App';
 import Home from './pages/Home'
 import Productos from './pages/Productos';
 import DetallesProducto from './pages/DetallesProducto';
+import Pasarela from './pages/Pasarela';
 
 
 ReactDOM.render(
@@ -18,6 +19,7 @@ ReactDOM.render(
           <Route index element={<h1>Detalles producto</h1>} />
           <Route path=':productoId' element={<DetallesProducto/>}/>
         </Route>
+        <Route path="checkout" element={<Pasarela/>} />
       </Route>
       <Route to="*" element={<p>Nada por aqui!</p>} />
     </Routes>
