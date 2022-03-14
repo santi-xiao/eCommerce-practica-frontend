@@ -4,7 +4,7 @@ import Producto from '../Components/Producto';
 
 const axios = require('axios');
 
-const DetallesProducto = () =>{
+const DetallesProducto = (props) =>{
     let params = useParams();
     const [carrito, setCarrito] = useOutletContext();
 
@@ -12,6 +12,7 @@ const DetallesProducto = () =>{
 
     const handleClick = () => {
       let newCarrito = [...carrito];
+
       let prodIndex = newCarrito.findIndex((prod => prod.id === producto.id));
 
       if(prodIndex > -1){
@@ -32,8 +33,8 @@ const DetallesProducto = () =>{
 
     return(
         <div>
-            <Producto  {...producto}/>
-            <button onClick={handleClick} className="btn btn-warning">Añadir</button>
+            <Producto  {...producto} />
+            <button onClick={handleClick} className="btn btn-warning">Add to cart</button>
         </div>
     )
 }

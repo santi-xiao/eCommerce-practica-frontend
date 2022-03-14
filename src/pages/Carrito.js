@@ -1,26 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProdCarrito from '../Components/ProdCarrito';
 
 const Carrito = (props) => {
-    
+
+    const {carrito, setCarrito} = props;
 
     const calcularPrecioTotal = () =>{
         let total = 0;
         props.carrito.map((prod) => {
             total += prod.precio * prod.cantidad;
+            return total;
         })
         return total;
     }
 
+
+
+
+
     if(props.carrito != null){
         return (
             <div className='sticky-top'>
-                <h1>Cesta</h1>
+                <h1>Cart</h1>
                 <ul className="list-group scroll-div">
                     {props.carrito.map((prod) => (
-                        <li className='list-group-item' key={prod.id}>
-                            <p className='text-warning'>{prod.nombre} <span className='text-black fw-bold'>{prod.precio * prod.cantidad}€</span> <span className='text-muted'>x{prod.cantidad}</span></p>
-                        </li>
+                        <ProdCarrito {...prod} key={prod.id} carrito={carrito} setCarrito={setCarrito}/>
                     ))}
                 </ul>
                 <p>Total: <span className='fw-bold'>{calcularPrecioTotal()}</span> €</p>  
@@ -31,7 +36,7 @@ const Carrito = (props) => {
     
     return(
         <>
-            <h1>Carrito!</h1>
+            <h1>Cart</h1>
         </>
     )
         
