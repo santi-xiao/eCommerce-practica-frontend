@@ -12,8 +12,8 @@ const ProdCarrito = ({id, nombre, precio, cantidad, carrito, setCarrito, index})
         <>
             <li className='list-group-item' key={id}>
                 <p className='text-warning'>{nombre} <span className='text-black fw-bold'>{precio * cantidad}€</span> <span className='text-muted'>x{cantidad}</span></p>
-                <div className='btn btn-dark' onClick={eliminarDelCarrito}>x</div>
             </li>
+                <div className='bg-dark text-light text-center' onClick={eliminarDelCarrito}>x</div>
         </>
     )
 }

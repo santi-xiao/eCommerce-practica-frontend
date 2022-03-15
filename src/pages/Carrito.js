@@ -15,21 +15,18 @@ const Carrito = (props) => {
         return total;
     }
 
-
-
-
-
     if(props.carrito != null){
         return (
             <div className='sticky-top'>
                 <h1>Cart</h1>
                 <ul className="list-group scroll-div">
-                    {props.carrito.map((prod) => (
+                    {props.carrito.length > 0? props.carrito.map((prod) => (
                         <ProdCarrito {...prod} key={prod.id} carrito={carrito} setCarrito={setCarrito}/>
-                    ))}
+                    )) : 'No products'}
                 </ul>
-                <p>Total: <span className='fw-bold'>{calcularPrecioTotal()}</span> €</p>  
-                <Link to="/checkout" className='btn btn-warning btn-lg btn-block'>Ir a la cesta</Link>     
+                <p>Total: <span className='fw-bold'>{calcularPrecioTotal()}</span> €</p>
+                {props.carrito.length > 0? <Link to="/checkout" className='btn btn-warning btn-lg btn-block'>Ir a la cesta</Link> : <button type='button' className='btn btn-dark' disabled>Add something to Cart!</button>}
+                {/* <Link to="/checkout" className='btn btn-warning btn-lg btn-block'>Ir a la cesta</Link>      */}
             </div>
         )
     }

@@ -1,9 +1,27 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const Signup = () => {
 
-    const [usuario, setUsuario] = useState([]);
+    let navigate = useNavigate();
+
+    const [usuario, setUsuario] = useState(null);
+
+    useEffect(() =>{
+        if(usuario){
+            try{
+                axios.post('http://127.0.0.1:8080/api/usuarios/new', usuario)
+                .then(()=>{
+                    console.log('guardado con exito');
+                    navigate("/login") ;
+                });
+            }catch(error){
+                console.log(error);
+            }
+        }
+    },[usuario]);
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -41,12 +59,6 @@ const Signup = () => {
             fecha_nacimiento,
             activo
         });
-        try{
-            axios.post('http://127.0.0.1:8080/api/usuarios/new', usuario);
-            console.log('guardado con exito');
-        }catch(error){
-            console.log(error);
-        }
     }
 
     return(
